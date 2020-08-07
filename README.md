@@ -1,2 +1,2 @@
 # LAR
- Look Away Reminder
+ Look Away Reminder made with electron and nodejs
