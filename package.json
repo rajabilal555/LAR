@@ -1,0 +1,32 @@
+{
+	"name": "lar",
+	"version": "0.0.1",
+	"description": "look away reminder",
+	"main": "index.js",
+	"scripts": {
+		"start": "electron ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rajabilal555/LAR.git"
+	},
+	"keywords": [
+		"look",
+		"away",
+		"reminder",
+		"eyes",
+		"stress",
+		"tttr",
+		"twenty",
+		"rule"
+	],
+	"author": "rajabilal555",
+	"license": "GPL-3.0-or-later",
+	"bugs": {
+		"url": "https://github.com/rajabilal555/LAR/issues"
+	},
+	"homepage": "https://github.com/rajabilal555/LAR#readme",
+	"dependencies": {
+		"electron": "^9.1.2"
+	}
+}
