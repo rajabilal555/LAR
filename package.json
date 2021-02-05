@@ -27,6 +27,6 @@
 	},
 	"homepage": "https://github.com/rajabilal555/LAR#readme",
 	"dependencies": {
-		"electron": "^9.1.2"
+		"electron": "^9.4.0"
 	}
 }
