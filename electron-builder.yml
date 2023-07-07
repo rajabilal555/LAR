@@ -1,0 +1,14 @@
+appId: com.rajabilal555.lar
+productName: LAR Lookaway Reminder
+copyright: Copyright © 2023 rajabilal555
+directories:
+  output: dist
+  buildResources: resources
+extraResources:
+  - resources/icon.ico
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+publish: null

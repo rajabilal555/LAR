@@ -1,32 +1,34 @@
 {
-	"name": "lar",
-	"version": "0.0.1",
-	"description": "look away reminder",
-	"main": "index.js",
-	"scripts": {
-		"start": "electron ."
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/rajabilal555/LAR.git"
-	},
-	"keywords": [
-		"look",
-		"away",
-		"reminder",
-		"eyes",
-		"stress",
-		"tttr",
-		"twenty",
-		"rule"
-	],
-	"author": "rajabilal555",
-	"license": "GPL-3.0-or-later",
-	"bugs": {
-		"url": "https://github.com/rajabilal555/LAR/issues"
-	},
-	"homepage": "https://github.com/rajabilal555/LAR#readme",
-	"dependencies": {
-		"electron": "^9.4.0"
-	}
+  "name": "lar",
+  "description": "look away reminder",
+  "version": "0.0.1",
+  "author": "Bilal Pervez <rajabilal555@gmail.com>",
+  "main": "app/background.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajabilal555/LAR.git"
+  },
+  "scripts": {
+    "dev": "nextron",
+    "build": "nextron build",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "electron-log": "^5.0.0-beta.24",
+    "electron-serve": "^1.1.0",
+    "electron-store": "^8.1.0"
+  },
+  "devDependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.26",
+    "antd": "^4.22.8",
+    "electron": "^21.3.3",
+    "electron-builder": "^23.6.0",
+    "next": "^12.3.4",
+    "nextron": "^8.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.9.4"
+  }
 }
