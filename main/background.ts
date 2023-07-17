@@ -1,7 +1,8 @@
-import { Menu, Notification, Tray, app } from "electron";
-import log from "electron-log";
+import { Menu, Tray, app } from "electron";
 import serve from "electron-serve";
 import { createWindow, getAppPath } from "./helpers";
+import NotificationHandler from "./helpers/notificationHandler";
+import { loadIpcHandlers } from "./ipc";
 const isProd: boolean = process.env.NODE_ENV === "production";
 
 if (isProd) {
@@ -13,9 +14,6 @@ if (isProd) {
 (async () => {
   await app.whenReady();
   const iconpath = getAppPath("resources/icon.ico");
-  console.log(iconpath);
-  log.info("Log from the main process");
-  log.info(`IconPath: ${iconpath}`);
   const mainWindow = createWindow("main", {
     width: 600,
     height: 700,
@@ -41,7 +39,12 @@ if (isProd) {
     mainWindow.show();
   });
   tray.setContextMenu(contextMenu);
+  //* Load the IPC Handlers
+  loadIpcHandlers();
+  //* Initialize the Notification handler
+  NotificationHandler.init();
 
+  //* Load our Page
   if (isProd) {
     await mainWindow.loadURL("app://./home.html");
   } else {
@@ -49,16 +52,7 @@ if (isProd) {
     await mainWindow.loadURL(`http://localhost:${port}/home`);
     // mainWindow.webContents.openDevTools();
   }
-  setInterval(showNotification, 120000);
 })();
-const showNotification = () => {
-  const NOTIFICATION_TITLE = "Look Away 🔔";
-  const NOTIFICATION_BODY = "Avert yer eyeees!!!!";
-  new Notification({
-    title: NOTIFICATION_TITLE,
-    body: NOTIFICATION_BODY,
-  }).show();
-};
 app.on("window-all-closed", () => {
   app.quit();
 });

@@ -1,11 +1,24 @@
 import { Layout, Result, Row } from "antd";
+import { ipcRenderer } from "electron";
 import Head from "next/head";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const { Header, Content } = Layout;
 
+const ipc = ipcRenderer || false;
+
 function Home() {
+  const [intervalSetting, setIntervalSetting] = useState<number>();
+
+  useEffect(() => {
+    if (ipc) {
+      ipc
+        .invoke("getSettingValue", "interval")
+        .then((v) => setIntervalSetting(v));
+    }
+  }, []);
+
   return (
     <React.Fragment>
       {/* @ts-ignore */}
@@ -28,9 +41,7 @@ function Home() {
             title="LAR"
             subTitle="Look away Reminder"
           />
-          <p>
-            Will show a notification every 2 minutes or 120 seconds by default.
-          </p>
+          <p>We will show a notification every {intervalSetting} seconds.</p>
         </div>
       </Content>
     </React.Fragment>
